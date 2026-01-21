@@ -5,7 +5,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:movies="http://example.org/movies#">
     <owl:Ontology rdf:about="http://example.org/movies"/>
     
 
@@ -219,8 +220,14 @@
     <!-- http://example.org/movies#AnimatedFilm -->
 
     <owl:Class rdf:about="http://example.org/movies#AnimatedFilm">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/movies#hasGenre"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/movies#Animation"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://example.org/movies#Movie"/>
-        <owl:disjointWith rdf:resource="http://example.org/movies#Documentary"/>
+        <owl:disjointWith rdf:resource="http://example.org/movies#DocumentaryMovie"/>
     </owl:Class>
     
 
@@ -253,21 +260,21 @@
     
 
 
-    <!-- http://example.org/movies#Commedy -->
+    <!-- http://example.org/movies#Comedy -->
 
-    <owl:Class rdf:about="http://example.org/movies#Commedy">
+    <owl:Class rdf:about="http://example.org/movies#Comedy">
         <rdfs:subClassOf rdf:resource="http://example.org/movies#Genre"/>
     </owl:Class>
     
 
 
-    <!-- http://example.org/movies#CommedyMovie -->
+    <!-- http://example.org/movies#ComedyMovie -->
 
-    <owl:Class rdf:about="http://example.org/movies#CommedyMovie">
+    <owl:Class rdf:about="http://example.org/movies#ComedyMovie">
         <owl:equivalentClass>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://example.org/movies#hasGenre"/>
-                <owl:someValuesFrom rdf:resource="http://example.org/movies#Commedy"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/movies#Comedy"/>
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://example.org/movies#Movie"/>
@@ -316,6 +323,20 @@
     <!-- http://example.org/movies#Documentary -->
 
     <owl:Class rdf:about="http://example.org/movies#Documentary">
+        <rdfs:subClassOf rdf:resource="http://example.org/movies#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/movies#DocumentaryMovie -->
+
+    <owl:Class rdf:about="http://example.org/movies#DocumentaryMovie">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/movies#hasGenre"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/movies#Documentary"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://example.org/movies#Movie"/>
     </owl:Class>
     
@@ -585,6 +606,15 @@
     
 
 
+    <!-- http://example.org/movies#AdrianBelew -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#AdrianBelew">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#AdventureGenre -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#AdventureGenre">
@@ -596,6 +626,24 @@
     <!-- http://example.org/movies#AlPacino -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#AlPacino">
+        <rdf:type rdf:resource="http://example.org/movies#Actor"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#AlanSilvestri -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#AlanSilvestri">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#AlexHonnold -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#AlexHonnold">
         <rdf:type rdf:resource="http://example.org/movies#Actor"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
     </owl:NamedIndividual>
@@ -632,6 +680,18 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#Avatar2009">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#JamesHorner"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#JamesCameron"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#SamWorthington"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#SigourneyWeaver"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#ZoeSaldana"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#AdventureGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#SciFiGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#AvatarFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#TwentiethCenturyStudios"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#JamesCameron"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#JohnLandau"/>
     </owl:NamedIndividual>
     
 
@@ -648,6 +708,18 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#AvatarTheWayOfWater">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#SimonFranglen"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#JamesCameron"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#SamWorthington"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#SigourneyWeaver"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#ZoeSaldana"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#AdventureGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#SciFiGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#AvatarFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#TwentiethCenturyStudios"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#JamesCameron"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#JohnLandau"/>
     </owl:NamedIndividual>
     
 
@@ -660,10 +732,42 @@
     
 
 
+    <!-- http://example.org/movies#BatmanBegins -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#BatmanBegins">
+        <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#HansZimmer"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#JamesNewtonHorward"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#ChristopherNolan"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#ChristianBale"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ActionGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#CrimeGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ThrillerGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#BatmanFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#CharlesRoven"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#EmmaThomas"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#LarryFranco"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#WarnerBros"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#ChristopherNolan"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#DavidSGoyer"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#BatmanFranchise -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#BatmanFranchise">
         <rdf:type rdf:resource="http://example.org/movies#Franchise"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#BillGerber -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#BillGerber">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
     </owl:NamedIndividual>
     
 
@@ -673,6 +777,24 @@
     <owl:NamedIndividual rdf:about="http://example.org/movies#BradPitt">
         <rdf:type rdf:resource="http://example.org/movies#Actor"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#BrandonRoberts -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#BrandonRoberts">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#CharlesRoven -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#CharlesRoven">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
     </owl:NamedIndividual>
     
 
@@ -716,7 +838,9 @@
 
     <!-- http://example.org/movies#ComedyGenre -->
 
-    <owl:NamedIndividual rdf:about="http://example.org/movies#ComedyGenre"/>
+    <owl:NamedIndividual rdf:about="http://example.org/movies#ComedyGenre">
+        <rdf:type rdf:resource="http://example.org/movies#Comedy"/>
+    </owl:NamedIndividual>
     
 
 
@@ -738,6 +862,15 @@
     
 
 
+    <!-- http://example.org/movies#DavidSGoyer -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#DavidSGoyer">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Screenwriter"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#DenisVilleneuve -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#DenisVilleneuve">
@@ -747,10 +880,45 @@
     
 
 
+    <!-- http://example.org/movies#DianeJohnson -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#DianeJohnson">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Screenwriter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#Disney -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#Disney">
+        <rdf:type rdf:resource="http://example.org/movies#Studio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#DocumentaryGenre -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#DocumentaryGenre">
+        <rdf:type rdf:resource="http://example.org/movies#Documentary"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#DramaGenre -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#DramaGenre">
         <rdf:type rdf:resource="http://example.org/movies#Drama"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#ElizabethChaiVasarhelyi -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#ElizabethChaiVasarhelyi">
+        <rdf:type rdf:resource="http://example.org/movies#Director"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
     </owl:NamedIndividual>
     
 
@@ -791,6 +959,15 @@
     
 
 
+    <!-- http://example.org/movies#EvanHayes -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#EvanHayes">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#FantasyGenre -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#FantasyGenre">
@@ -812,6 +989,16 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#ForrestGump">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#AlanSilvestri"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#RobertZemeckis"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#TomHanks"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#DramaGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#RomanceGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#ParamountPictures"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#AcademyAwards"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#EricRoth"/>
     </owl:NamedIndividual>
     
 
@@ -821,6 +1008,29 @@
     <owl:NamedIndividual rdf:about="http://example.org/movies#FrankMarshall">
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
         <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#FreeSolo -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#FreeSolo">
+        <rdf:type rdf:resource="http://example.org/movies#DocumentaryMovie"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#BrandonRoberts"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#MarcoBeltrami"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#ElizabethChaiVasarhelyi"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#JimmyChin"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#AlexHonnold"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#AdventureGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#DocumentaryGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#ElizabethChaiVasarhelyi"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#EvanHayes"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#JimmyChin"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#ShannonDill"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#NationalGeographicDocumentaryFilms"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#AcademyAwards"/>
     </owl:NamedIndividual>
     
 
@@ -846,6 +1056,19 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#GranTorino">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#KyleEastwood"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#MichaelStevens"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#ClintEastwood"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#ClintEastwood"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#CrimeGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#DramaGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#BillGerber"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#ClintEastwood"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#RobertLorenz"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#WarnerBros"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#NickSchenk"/>
     </owl:NamedIndividual>
     
 
@@ -908,6 +1131,17 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#Inception">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#HansZimmer"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#ChristopherNolan"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#LeonardoDiCaprio"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#MisteryGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#SciFiGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#EmmaThomas"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#WarnerBros"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#AcademyAwards"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#JonathanNolan"/>
     </owl:NamedIndividual>
     
 
@@ -916,6 +1150,27 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#Interstellar">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#HansZimmer"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#ChristopherNolan"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#MatthewMcConaughey"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#DramaGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#SciFiGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#EmmaThomas"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#ParamountPictures"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#WarnerBros"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#GoldenGlobes"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#JonathanNolan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#JackNicholson -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#JackNicholson">
+        <rdf:type rdf:resource="http://example.org/movies#Actor"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
     </owl:NamedIndividual>
     
 
@@ -939,9 +1194,28 @@
     
 
 
+    <!-- http://example.org/movies#JamesNewtonHorward -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#JamesNewtonHorward">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#JerryBruckheimer -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#JerryBruckheimer">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#JimmyChin -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#JimmyChin">
+        <rdf:type rdf:resource="http://example.org/movies#Director"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
         <rdf:type rdf:resource="http://example.org/movies#Producer"/>
     </owl:NamedIndividual>
@@ -979,6 +1253,18 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#Joker">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#HildurGudnadottir"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#ToddPhillips"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#JoaquinPhoenix"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#RobertDeNiro"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#DramaGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ThrillerGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#ToddPhillips"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#WarnerBros"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#AcademyAwards"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#ToddPhillips"/>
     </owl:NamedIndividual>
     
 
@@ -1019,10 +1305,37 @@
     
 
 
+    <!-- http://example.org/movies#KyleEastwood -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#KyleEastwood">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#LarryFranco -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#LarryFranco">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#LeonardoDiCaprio -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#LeonardoDiCaprio">
         <rdf:type rdf:resource="http://example.org/movies#Actor"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#MarcoBeltrami -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#MarcoBeltrami">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
     </owl:NamedIndividual>
     
@@ -1064,6 +1377,15 @@
     
 
 
+    <!-- http://example.org/movies#MichaelStevens -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#MichaelStevens">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#MisteryGenre -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#MisteryGenre">
@@ -1076,6 +1398,12 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#MyNeighborTotoro">
         <rdf:type rdf:resource="http://example.org/movies#AnimationMovie"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#HayaoMiyazaki"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#AnimationGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#FantasyGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#StudioGhibli"/>
     </owl:NamedIndividual>
     
 
@@ -1085,6 +1413,23 @@
     <owl:NamedIndividual rdf:about="http://example.org/movies#NataliePortman">
         <rdf:type rdf:resource="http://example.org/movies#Actor"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#NationalGeographicDocumentaryFilms -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#NationalGeographicDocumentaryFilms">
+        <rdf:type rdf:resource="http://example.org/movies#Studio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#NickSchenk -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#NickSchenk">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Screenwriter"/>
     </owl:NamedIndividual>
     
 
@@ -1131,10 +1476,41 @@
     
 
 
+    <!-- http://example.org/movies#Piper -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#Piper">
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <rdf:type rdf:resource="http://example.org/movies#ShortFilm"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#AdrianBelew"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#AnimationGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#Pixar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#Pixar -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#Pixar">
+        <rdf:type rdf:resource="http://example.org/movies#Studio"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#PulpFiction -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#PulpFiction">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#QuentinTarantino"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#SamuelLJackson"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#UmaThurman"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ComedyGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#CrimeGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#ParamountPictures"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#PalmeDor"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#QuentinTarantino"/>
     </owl:NamedIndividual>
     
 
@@ -1145,6 +1521,15 @@
         <rdf:type rdf:resource="http://example.org/movies#Director"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
         <rdf:type rdf:resource="http://example.org/movies#Screenwriter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#RachelElkind -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#RachelElkind">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
     </owl:NamedIndividual>
     
 
@@ -1162,6 +1547,24 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#RobertDeNiro">
         <rdf:type rdf:resource="http://example.org/movies#Actor"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#RobertLorenz -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#RobertLorenz">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#RobertZemeckis -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#RobertZemeckis">
+        <rdf:type rdf:resource="http://example.org/movies#Director"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
     </owl:NamedIndividual>
     
@@ -1193,6 +1596,15 @@
     
 
 
+    <!-- http://example.org/movies#SamuelLJackson -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#SamuelLJackson">
+        <rdf:type rdf:resource="http://example.org/movies#Actor"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#ScarlettJohansson -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#ScarlettJohansson">
@@ -1214,6 +1626,36 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#Se7en">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#TrentReznor"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#DavidFincher"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#BradPitt"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#CrimeGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#MisteryGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ThrillerGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#JerryBruckheimer"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#ParamountPictures"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#PalmeDor"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#PaulSchrader"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#ShannonDill -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#ShannonDill">
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#ShelleyDuvall -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#ShelleyDuvall">
+        <rdf:type rdf:resource="http://example.org/movies#Actor"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
     </owl:NamedIndividual>
     
 
@@ -1240,6 +1682,12 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#SpiritedAway">
         <rdf:type rdf:resource="http://example.org/movies#AnimatedFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#HayaoMiyazaki"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#AnimationGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#FantasyGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#StudioGhibli"/>
     </owl:NamedIndividual>
     
 
@@ -1249,6 +1697,8 @@
     <owl:NamedIndividual rdf:about="http://example.org/movies#StanleyKubrick">
         <rdf:type rdf:resource="http://example.org/movies#Director"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Screenwriter"/>
     </owl:NamedIndividual>
     
 
@@ -1284,6 +1734,16 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#TheDarkKnight">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#HansZimmer"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#ChristopherNolan"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#ChristianBale"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ActionGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#CrimeGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ThrillerGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#BatmanFranchise"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#WarnerBros"/>
+        <movies:wonAward rdf:resource="http://example.org/movies#BAFTA"/>
     </owl:NamedIndividual>
     
 
@@ -1292,6 +1752,20 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#TheShining">
         <rdf:type rdf:resource="http://example.org/movies#FeatureFilm"/>
+        <rdf:type rdf:resource="http://example.org/movies#Movie"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#RachelElkind"/>
+        <movies:composedBy rdf:resource="http://example.org/movies#WendyCarlsos"/>
+        <movies:directedBy rdf:resource="http://example.org/movies#StanleyKubrick"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#JackNicholson"/>
+        <movies:hasActor rdf:resource="http://example.org/movies#ShelleyDuvall"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#HorrorGenre"/>
+        <movies:hasGenre rdf:resource="http://example.org/movies#ThrillerGenre"/>
+        <movies:partOfFranchise rdf:resource="http://example.org/movies#NoFranchise"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#GaleAnneHurd"/>
+        <movies:producedBy rdf:resource="http://example.org/movies#StanleyKubrick"/>
+        <movies:producedByStudio rdf:resource="http://example.org/movies#WarnerBros"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#DianeJohnson"/>
+        <movies:writtenBy rdf:resource="http://example.org/movies#StanleyKubrick"/>
     </owl:NamedIndividual>
     
 
@@ -1309,6 +1783,8 @@
     <owl:NamedIndividual rdf:about="http://example.org/movies#ToddPhillips">
         <rdf:type rdf:resource="http://example.org/movies#Director"/>
         <rdf:type rdf:resource="http://example.org/movies#Person"/>
+        <rdf:type rdf:resource="http://example.org/movies#Producer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Screenwriter"/>
     </owl:NamedIndividual>
     
 
@@ -1339,10 +1815,28 @@
     
 
 
+    <!-- http://example.org/movies#UmaThurman -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#UmaThurman">
+        <rdf:type rdf:resource="http://example.org/movies#Actor"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/movies#WarnerBros -->
 
     <owl:NamedIndividual rdf:about="http://example.org/movies#WarnerBros">
         <rdf:type rdf:resource="http://example.org/movies#Studio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/movies#WendyCarlsos -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/movies#WendyCarlsos">
+        <rdf:type rdf:resource="http://example.org/movies#Composer"/>
+        <rdf:type rdf:resource="http://example.org/movies#Person"/>
     </owl:NamedIndividual>
     
 
