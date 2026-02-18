@@ -1,0 +1,37 @@
+1. Award-winning movies
+
+AwardWinningMovie
+
+2. Sci-Fi movies
+
+SciFiMovie
+
+3. Movies directed by Christopher Nolan
+
+Movie and (directedBy value ChristopherNolan)
+
+4. Movies starring Leonardo DiCaprio
+
+5. Actors who acted in at least one award-winning movie
+
+Actor and (actedIn some AwardWinningMovie)
+
+6. Movies that have a sequel
+
+Movie and (hasSequel some Movie)
+
+7. Franchise movies
+
+Movie and (partOfFranchise some Franchise)
+
+8. Movies with rating high (≥ 8.5)
+
+Movie and (hasRating some xsd:decimal[>= 8.5])
+
+9. Movies released from 2015 onwards
+
+Movie and (hasReleaseYear some xsd:integer[>= 2015])
+
+10. Directors who directed at least one Thriller movie
+
+Director and (directed some ThrillerMovie)

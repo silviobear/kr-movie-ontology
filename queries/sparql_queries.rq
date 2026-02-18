@@ -1,0 +1,142 @@
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX movies: <http://example.org/movies#>
+
+
+1. Movie Catalog
+SELECT ?movie ?title ?year ?rating
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasTitle ?title .
+  ?movie movies:hasReleaseYear ?year .
+  ?movie movies:hasRating ?rating .
+}
+ORDER BY DESC(?rating)
+
+2. High Rating Movie
+
+SELECT ?movie ?title ?rating
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasTitle ?title .
+  ?movie movies:hasRating ?rating .
+  FILTER( ?rating >= 8.5 )
+}
+ORDER BY DESC(?rating)
+
+3. 2015 and up Movie
+
+SELECT ?movie ?title ?year
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasTitle ?title .
+  ?movie movies:hasReleaseYear ?year .
+  FILTER( ?year >= 2015 )
+}
+ORDER BY DESC(?year) ?title
+
+4. Movie Cast
+
+SELECT ?movie ?actor
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasTitle "Avatar" .
+  ?movie movies:hasActor ?actor .
+}
+ORDER BY ?actor
+
+5. Number of movie per genre
+
+SELECT ?genre (COUNT(?movie) AS ?numMovies)
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasGenre ?genre .
+}
+GROUP BY ?genre
+ORDER BY DESC(?numMovies)
+
+6. Directors and number of movies directed by them
+
+SELECT ?director (COUNT(?movie) AS ?numMovies)
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:directedBy ?director .
+}
+GROUP BY ?director
+ORDER BY DESC(?numMovies)
+
+7. Top 10 Actors based on number of movie
+
+SELECT ?actor (COUNT(?movie) AS ?numMovies)
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasActor ?actor .
+}
+GROUP BY ?actor
+ORDER BY DESC(?numMovies)
+LIMIT 10
+
+8. Movies that belogns to a franchise
+
+SELECT ?movie ?title ?franchise
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasTitle ?title .
+  ?movie movies:partOfFranchise ?franchise .
+  FILTER( ?franchise != movies:NoFranchise )
+}
+ORDER BY ?franchise ?title
+
+9. Awarded Movies
+
+SELECT ?movie ?title ?award
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasTitle ?title .
+  ?movie movies:wonAward ?award .
+}
+ORDER BY ?award ?title
+
+10. Sequels
+
+SELECT ?m1 ?title1 ?m2 ?title2
+WHERE {
+  ?m1 rdf:type movies:Movie .
+  ?m2 rdf:type movies:Movie .
+  ?m1 movies:hasSequel ?m2 .
+  ?m1 movies:hasTitle ?title1 .
+  ?m2 movies:hasTitle ?title2 .
+}
+ORDER BY ?title1
+
+11. Movie details with direcotr and studio (optional)
+
+SELECT ?movie ?title ?director ?studio
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasTitle ?title .
+  OPTIONAL { ?movie movies:directedBy ?director . }
+  OPTIONAL { ?movie movies:producedByStudio ?studio . }
+}
+ORDER BY ?title
+
+12. Average ratings per genre
+
+SELECT ?genre (AVG(?rating) AS ?avgRating)
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasGenre ?genre .
+  ?movie movies:hasRating ?rating .
+}
+GROUP BY ?genre
+ORDER BY DESC(?avgRating)
+
+13. Actors that at least acted in two movies
+
+SELECT ?actor (COUNT(DISTINCT ?movie) AS ?numMovies)
+WHERE {
+  ?movie rdf:type movies:Movie .
+  ?movie movies:hasActor ?actor .
+}
+GROUP BY ?actor
+HAVING (COUNT(DISTINCT ?movie) >= 2)
+ORDER BY DESC(?numMovies) ?actor
