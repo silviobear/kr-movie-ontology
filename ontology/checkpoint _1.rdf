@@ -1907,6 +1907,7 @@
         <movies:writtenBy rdf:resource="http://example.org/movies#EricRoth"/>
         <movies:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.8</movies:hasRating>
         <movies:hasReleaseYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1994</movies:hasReleaseYear>
+        <movies:hasRuntimeMinutes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">144</movies:hasRuntimeMinutes>
         <movies:hasTitle>Forest Gump</movies:hasTitle>
     </owl:NamedIndividual>
     
@@ -3913,6 +3914,7 @@
         <movies:producedByStudio rdf:resource="http://example.org/movies#ParamountPictures"/>
         <movies:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.6</movies:hasRating>
         <movies:hasReleaseYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1998</movies:hasReleaseYear>
+        <movies:hasRuntimeMinutes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">169</movies:hasRuntimeMinutes>
         <movies:hasTitle>Saving Private Ryan</movies:hasTitle>
     </owl:NamedIndividual>
     

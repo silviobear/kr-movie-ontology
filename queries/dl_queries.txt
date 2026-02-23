@@ -12,6 +12,8 @@ Movie and (directedBy value ChristopherNolan)
 
 4. Movies starring Leonardo DiCaprio
 
+Movie and (hasActor value LeonardoDiCaprio)
+
 5. Actors who acted in at least one award-winning movie
 
 Actor and (actedIn some AwardWinningMovie)
